@@ -3,7 +3,6 @@
 # combines dmenu and dmenu_run into one command and sets colors and gaps from 
 # .Xresources. prob a better way to do it but this works for now
 
-
 FONT=$(xrdb -query | grep 'dwm.dmenufont' | cut -f2)
 GAP=$(xrdb -query | grep 'dwm.gappih' | cut -f2)
 # monitor width-gap to set width of dmenu
@@ -24,9 +23,9 @@ $CMD $@     \
 -x $GAP     \
 -y $GAP     \
 -z $WIDTH   \
--h 30       \
 -fn "$FONT" \
 -nb $NB     \
 -nf $NF     \
 -sb $SB     \
--sf $SF
+-sf $SF #    \
+#-h 30
