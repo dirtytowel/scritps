@@ -1,4 +1,4 @@
-These are just my crappy shell scripts. you can install them if you want.
+These are just my crappy shell scripts. you can install them if you want. Yes I know I spelled scripts wrong. no I am not going to fix it.
 
 ## INSTALL
 you can install the scripts you want with the make command. there are a couple of steps you will have to take to make sure it installs properly
