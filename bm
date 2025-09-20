@@ -1,0 +1,7 @@
+#!/bin/sh
+# start applet if missing, remember its PID
+pidof blueman-applet >/dev/null || { blueman-applet & APP_PID=$!; sleep 1; }
+# run manager
+blueman-manager "$@"
+# if we started the applet, kill it now
+kill ${APP_PID:-} 2>/dev/null

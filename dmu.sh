@@ -19,6 +19,7 @@ SF=$(xrdb -query | grep 'dwm.selfgcol' | cut -f2)
 
 # run command
 $CMD $@     \
+-vi         \
 -m 0        \
 -x $GAP     \
 -y $GAP     \
