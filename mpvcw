@@ -1,0 +1,20 @@
+#!/bin/sh
+
+m3u=$1
+cache="$HOME/.cache/mpv-playlist-pos"
+
+start=""
+[ -f "$cache" ] && start=$(awk -v p="$m3u" '$1==p {print $2}' "$cache")
+
+if [ -n "$start" ]; then
+    exec mpv \
+      --script-opts=playlist_pos-plkey="$m3u" \
+      --playlist-start="$start" \
+      --save-position-on-quit \
+      $m3u
+else
+    exec mpv \
+      --script-opts=playlist_pos-plkey="$m3u" \
+      --save-position-on-quit \
+      $m3u
+fi
