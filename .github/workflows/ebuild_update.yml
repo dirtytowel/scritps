@@ -17,11 +17,33 @@ jobs:
     outputs:
       script_list: ${{ steps.list_scripts.outputs.script_list }}
     steps:
-
       - uses: actions/checkout@v4
 
       - name: list of scripts
         id: list_scripts
         run: |
           echo "script_list=$(ls -I Makefile -I README.md -I archive -I .github -I .gitignore -I config.mk | tr '\n' ' ' | sed 's/ $//')" >> $GITHUB_OUTPUT
+
+  update_ebuild:
+    runs-on: ubuntu-latest
+    needs: list_all_scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: dirtytowel/garbage-overlay
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: master
+
+      - name: update useflags
+        run: |
+          SCRIPTS=$(echo "${{ needs.list_all_scripts.outputs.script_list }}" | tr ' ' '\n' | sort | tr '\n' ' ' | sed 's/ $//')
+          sed -i "s/^SCRIPTS=.*/SCRIPTS=\"${SCRIPTS}\"/" app-misc/scripts/scripts-9999.ebuild
+
+      - name: commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "update use flags for scripts" || exit 0
+          git push
 
