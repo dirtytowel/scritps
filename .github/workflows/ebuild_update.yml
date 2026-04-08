@@ -23,6 +23,6 @@ jobs:
       - name: list of scripts
         id: list_scripts
         run: |
-          ls -I Makefile -I README.md -I archive > $GITHUB_OUTPUT
+          echo $(ls -I Makefile -I README.md -I archive) > $GITHUB_OUTPUT
           echo "$GITHUB_OUTPUT"
 
