@@ -1,0 +1,28 @@
+name: Update gentoo ebuild
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'archive/**'
+      - 'README.md'
+      - 'Makefile'
+      - '.gitignore'
+
+jobs:
+  list_all_scripts:
+    runs-on: ubuntu-latest
+    outputs:
+      script_list: ${{ steps.list_scripts.outputs.script_list }}
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: list of scripts
+        id: list_scripts
+        run: |
+          ls -I Makefile -I README.md -I archive > $GITHUB_OUTPUT
+          echo $GITHUB_OUTPUT
+
