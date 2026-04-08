@@ -8,7 +8,7 @@ create config.mk
 make config
 ```
 
-edit this file by adding a 1 next any scripts you want to install in the config.mk. 0 means it will not install that script
+edit this file by adding/removing the script name you want installed.
 
 install
 ```
