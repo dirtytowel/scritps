@@ -8,7 +8,7 @@ kill -1 $(pidof urxvtd)
 kill -1 $(pidof urxvt)
 
 # restart polybar
-polybar.sh
+polybar
 
 # restart dwm (doesn't quick bc dwm is running in loop)
 sleep 1 && dwm-msg run_command quit

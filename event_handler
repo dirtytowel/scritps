@@ -8,7 +8,7 @@ case $1 in
         [ ! -f /tmp/desktop_mode.tmp ] && \
         LID_STATE=$(cat /proc/acpi/button/lid/*/state | awk '{print $2}') && \
         [ "$LID_STATE" = "closed" ] && \
-        lock.sh & sleep 5 && \
+        lock & sleep 5 && \
         LID_STATE_AGAIN=$(cat /proc/acpi/button/lid/*/state | awk '{print $2}') && \
         [ "$LID_STATE_AGAIN" = "closed" ] && \
         BATTERY_STATE=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | awk '/state/ {print $NF}') && \
