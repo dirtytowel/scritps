@@ -23,5 +23,5 @@ jobs:
       - name: list of scripts
         id: list_scripts
         run: |
-          echo "script_list=$(ls -I Makefile -I README.md -I archive)" >> $GITHUB_OUTPUT
+          echo "script_list=$(ls -I Makefile -I README.md -I archive -I .github -I .gitignore -I config.mk | tr '\n' ' ' | sed 's/ $//')" >> $GITHUB_OUTPUT
 
