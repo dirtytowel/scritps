@@ -45,6 +45,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "update use flags for scripts" || exit 0
+          git commit -m "update use flags for app-misc/scripts" || exit 0
           git push
 
