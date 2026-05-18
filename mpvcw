@@ -1,7 +1,7 @@
 #!/bin/sh
 
 m3u=$1
-cache="$HOME/.cache/mpv-playlist-pos"
+cache="$HOME/.cache/mpv-playlist-pos/mpv-playlist-pos"
 
 start=""
 [ -f "$cache" ] && start=$(awk -v p="$m3u" '$1==p {print $2}' "$cache")
