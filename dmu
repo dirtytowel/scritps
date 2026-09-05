@@ -5,7 +5,7 @@
 
 FONT=$(xrdb -query | grep 'dwm.dmenufont' | cut -f2)
 GAP=$(xrdb -query | grep 'dwm.gappih' | cut -f2)
-HEIGHT=$(xrdb -query | grep 'bar.height' | cut -f2)
+HEIGHT=$(xrdb -query | grep 'window.height' | cut -f2)
 # monitor width-gap to set width of dmenu
 WIDTH=$(echo "$(xdpyinfo | grep dimensions | awk '{print $2}' | sed "s/x.*//" | tr -d '\n') - $GAP * 2" | bc)
 
