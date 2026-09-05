@@ -6,5 +6,8 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do
 sleep 1; done
 
+gap=$(xrdb -query | awk '/^dwm\.gappoh:/{print $2}')
+export BAR_WIDTH="100%:-$((gap * 2))px"
+
 # Launch bar
 polybar -q --reload main &
