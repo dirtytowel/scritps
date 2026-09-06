@@ -8,12 +8,16 @@ start=""
 
 if [ -n "$start" ]; then
     exec mpv \
+      --force-window=immediate \
+      --idle=yes \
       --script-opts=playlist_pos-plkey="$m3u" \
       --playlist-start="$start" \
       --save-position-on-quit \
       $m3u
 else
     exec mpv \
+      --force-window=immediate \
+      --idle=yes \
       --script-opts=playlist_pos-plkey="$m3u" \
       --save-position-on-quit \
       $m3u
